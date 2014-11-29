@@ -23,5 +23,4 @@ public class DetailsActivity extends Activity {
 	  }
    }
 
-
 }

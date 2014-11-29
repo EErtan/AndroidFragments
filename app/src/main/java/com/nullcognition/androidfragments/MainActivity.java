@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 			//		R.animator.fade_out);
 			//ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			ft.replace(R.id.details, details);
-			//ft.addToBackStack(TAG);
+			ft.addToBackStack(TAG); // optional usage in this example
 			ft.commit();
 		 }
 	  }
