@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 
    }
 
-   String httpResourceLocation = "https://uetnhht.notheuhn.com/tnoueh/snotuh/snuoth";
+   private String httpResourceLocation = "https://chart.googleapis.com/chart?chl=Froyo%7CGingerbread%7CIce%20Cream%20Sandwich%7CJelly%20Bean%7CKitKat&chd=t%3A0.6%2C9.8%2C8.5%2C50.9%2C30.2&chf=bg%2Cs%2C00000000&chco=c4df9b%2C6fad0c&cht=p&chs=500x250";
 
    public void doClick(android.view.View inView){
 

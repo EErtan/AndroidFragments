@@ -77,7 +77,7 @@ public class DownloadImageTask extends android.os.AsyncTask<String, Integer, and
    protected void setImageInView() {
 	  if(downloadedImage != null) {
 		 android.widget.ImageView imageView = (android.widget.ImageView)
-		   ((android.app.Activity) context).findViewById(com.nullcognition.ch02_configchanges.R.id.image); // todo place the correct image in the layout
+		   ((android.app.Activity) context).findViewById(com.nullcognition.ch02_configchanges.R.id.image);
 		 imageView.setImageBitmap(downloadedImage);
 	  }
    }
