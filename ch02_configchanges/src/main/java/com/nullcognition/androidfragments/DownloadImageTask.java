@@ -69,15 +69,14 @@ public class DownloadImageTask extends android.os.AsyncTask<String, Integer, and
 	  return null;
    }
 
-   private void setProgress(int progress) {
+   private void setProgress(int progress){
 	  this.progress = progress;
 	  publishProgress(this.progress);
    }
 
-   protected void setImageInView() {
-	  if(downloadedImage != null) {
-		 android.widget.ImageView imageView = (android.widget.ImageView)
-		   ((android.app.Activity) context).findViewById(com.nullcognition.ch02_configchanges.R.id.image);
+   protected void setImageInView(){
+	  if(downloadedImage != null){
+		 android.widget.ImageView imageView = (android.widget.ImageView)((android.app.Activity)context).findViewById(com.nullcognition.ch02_configchanges.R.id.image);
 		 imageView.setImageBitmap(downloadedImage);
 	  }
    }
@@ -89,23 +88,31 @@ public class DownloadImageTask extends android.os.AsyncTask<String, Integer, and
 	  progress = 0;
    }
 
-   private void sleepFor(long msecs) {
-	  try {
+   private void sleepFor(long msecs){
+	  try{
 		 Thread.sleep(msecs);
-	  } catch (InterruptedException e) {
+	  }
+	  catch(InterruptedException e){
 		 android.util.Log.v("sleep", "interrupted");
 	  }
    }
 
-   @Override
-   protected void onPostExecute(android.graphics.Bitmap inResult){
-	  super.onPostExecute(inResult);
+   protected void onProgressUpdate(Integer... progress){
+	  android.widget.TextView mText = (android.widget.TextView)((android.app.Activity)context).findViewById(com.nullcognition.ch02_configchanges.R.id.text);
+	  mText.setText("Progress so far: " + progress[0]);
    }
 
-   @Override
-   protected void onProgressUpdate(Integer... inProgress){
-	  super.onProgressUpdate(inProgress);
+   protected void onPostExecute(android.graphics.Bitmap result){
+	  if(result != null){
+		 downloadedImage = result;
+		 setImageInView();
+	  }
+	  else{
+		 android.widget.TextView errorMsg = (android.widget.TextView)((android.app.Activity)context).findViewById(com.nullcognition.ch02_configchanges.R.id.errorMsg);
+		 errorMsg.setText("Problem downloading image. Please try later.");
+	  }
    }
+
 
    @Override
    protected void onCancelled(android.graphics.Bitmap inResult){

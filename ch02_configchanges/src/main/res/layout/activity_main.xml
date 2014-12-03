@@ -13,10 +13,10 @@
 
 		<Button
 			android:id="@+id/button"
-			android:text="@string/get_image"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:onClick="doClick"
+			android:text="@string/get_image"
 			/>
 
 		<TextView
@@ -37,5 +37,6 @@
 		android:layout_width="fill_parent"
 		android:layout_height="0dip"
 		android:layout_weight="1"
+		android:contentDescription="@string/downloaded_image"
 		/>
 </LinearLayout>
