@@ -3,4 +3,6 @@
 	<string name="app_name">Shakespeare</string>
 	<string name="hello_world">hello</string>
 	<string name="action_settings">settings</string>
+	<string name="title_activity_main">Title Activity</string>
+	<string name="title_activity_details">Title DetailsActivity</string>
 </resources>
