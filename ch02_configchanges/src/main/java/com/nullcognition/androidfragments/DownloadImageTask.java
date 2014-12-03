@@ -35,7 +35,7 @@ public class DownloadImageTask extends android.os.AsyncTask<String, Integer, and
    public android.graphics.Bitmap DownloadImage(String... inURLS){
 	  org.apache.http.client.HttpClient httpClient = CustomHttpClient.getHttpClient();
 	  try{
-		 org.apache.http.client.methods.HttpGet request = new org.apache.http.client.methods.HttpGet(urls[0]);
+		 org.apache.http.client.methods.HttpGet request = new org.apache.http.client.methods.HttpGet(inURLS[0]);
 		 org.apache.http.params.HttpParams params = new org.apache.http.params.BasicHttpParams();
 		 org.apache.http.params.HttpConnectionParams.setSoTimeout(params, 60000);   // 1 minute
 		 request.setParams(params);
@@ -76,9 +76,9 @@ public class DownloadImageTask extends android.os.AsyncTask<String, Integer, and
 
    protected void setImageInView() {
 	  if(downloadedImage != null) {
-		 android.widget.ImageView mImage = (android.widget.ImageView)
-		   ((android.app.Activity) mContext).findViewById(com.nullcognition.ch02_configchanges.R.id.image);
-		 mImage.setImageBitmap(downloadedImage);
+		 android.widget.ImageView imageView = (android.widget.ImageView)
+		   ((android.app.Activity) context).findViewById(com.nullcognition.ch02_configchanges.R.id.image); // todo place the correct image in the layout
+		 imageView.setImageBitmap(downloadedImage);
 	  }
    }
 
@@ -87,6 +87,14 @@ public class DownloadImageTask extends android.os.AsyncTask<String, Integer, and
    protected void onPreExecute(){
 	  super.onPreExecute();
 	  progress = 0;
+   }
+
+   private void sleepFor(long msecs) {
+	  try {
+		 Thread.sleep(msecs);
+	  } catch (InterruptedException e) {
+		 android.util.Log.v("sleep", "interrupted");
+	  }
    }
 
    @Override

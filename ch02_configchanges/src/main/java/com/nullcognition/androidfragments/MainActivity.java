@@ -20,10 +20,10 @@ public class MainActivity extends Activity {
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.activity_main);
 
-	  if((diTask = DownloaImageTask.getInstance()) != null){
+	  if((diTask = DownloadImageTask.getInstance()) != null){
 
 		 diTask.setContext(this);
-		 if(ddiTask.getStatus() == android.os.AsyncTask.Status.FINISHED){
+		 if(diTask.getStatus() == android.os.AsyncTask.Status.FINISHED){
 			diTask.setImageInView();
 		 }
 	  }
