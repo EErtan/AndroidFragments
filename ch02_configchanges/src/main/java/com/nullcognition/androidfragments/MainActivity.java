@@ -14,11 +14,15 @@ public class MainActivity extends Activity {
    // asynctask is used for demo purposes to showcase the persistant task across lifecycles
 
    private DownloadImageTask diTask;
+   android.widget.ImageView imageView = null;
+
 
    @Override
    protected void onCreate(Bundle savedInstanceState){
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.activity_main);
+
+	  imageView = (android.widget.ImageView) findViewById(com.nullcognition.ch02_configchanges.R.id.image);
 
 	  if((diTask = DownloadImageTask.getInstance()) != null){
 
@@ -28,6 +32,16 @@ public class MainActivity extends Activity {
 		 }
 	  }
 
+	  // picasso library implementation
+	  android.widget.Button buttonOk = (android.widget.Button)findViewById(com.nullcognition.ch02_configchanges.R.id.buttonOk);
+	  buttonOk.setOnClickListener(new android.view.View.OnClickListener() {
+
+		 @Override
+		 public void onClick(android.view.View inView){
+
+			com.squareup.picasso.Picasso.with(getApplicationContext()).load(httpResourceLocation).into(imageView);
+		 }
+	  });
    }
 
    private String httpResourceLocation = "https://chart.googleapis.com/chart?chl=Froyo%7CGingerbread%7CIce%20Cream%20Sandwich%7CJelly%20Bean%7CKitKat&chd=t%3A0.6%2C9.8%2C8.5%2C50.9%2C30.2&chf=bg%2Cs%2C00000000&chco=c4df9b%2C6fad0c&cht=p&chs=500x250";
@@ -64,6 +78,7 @@ public class MainActivity extends Activity {
 
 	  //noinspection SimplifiableIfStatement
 	  if(id == R.id.action_settings){
+		 imageView.setImageResource(android.R.color.transparent);
 		 return true;
 	  }
 

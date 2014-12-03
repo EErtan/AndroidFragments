@@ -19,6 +19,14 @@
 			android:text="@string/get_image"
 			/>
 
+		<Button
+			android:id="@+id/buttonOk"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="doClick"
+			android:text="@string/get_image_ok"
+			/>
+
 		<TextView
 			android:id="@+id/text"
 			android:layout_width="wrap_content"
