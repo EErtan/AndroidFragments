@@ -15,6 +15,8 @@ public class MainActivity extends Activity {
 
    private DownloadImageTask diTask;
    android.widget.ImageView imageView = null;
+   public static final String TAG = "main activity";
+   private com.nullcognition.androidfragments.NonUIFragment workerFrag;
 
 
    @Override
@@ -22,7 +24,7 @@ public class MainActivity extends Activity {
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.activity_main);
 
-	  imageView = (android.widget.ImageView) findViewById(com.nullcognition.ch02_configchanges.R.id.image);
+	  imageView = (android.widget.ImageView)findViewById(com.nullcognition.ch02_configchanges.R.id.image);
 
 	  if((diTask = DownloadImageTask.getInstance()) != null){
 
@@ -48,40 +50,51 @@ public class MainActivity extends Activity {
 
    public void doClick(android.view.View inView){
 
-	  if(diTask != null){
-		 android.os.AsyncTask.Status diStatus = diTask.getStatus();
-		 android.util.Log.e(getClass().getSimpleName(), "ditask status = " + diStatus);
-
-		 if(diStatus != android.os.AsyncTask.Status.FINISHED){
-			android.util.Log.e(getClass().getSimpleName(), "finished the task");
-			return;
-		 }
+	  android.app.FragmentManager fragMgr = getFragmentManager();
+	  workerFrag = (NonUIFragment)fragMgr.findFragmentByTag("worker");
+	  if(workerFrag != null){
+		 android.util.Log.v(TAG, "found a worker fragment, getting image...");
+		 workerFrag.getImage();
 	  }
-	  diTask = DownloadImageTask.newInstance(this);
-	  diTask.execute(httpResourceLocation);
+	  else{
+		 android.util.Log.v(TAG, "need to make a new worker fragment");
+		 workerFrag = NonUIFragment.newInstance(); // could even pass the httpresourcelocation here or as part of the bundle
+		 fragMgr.beginTransaction().add(workerFrag, "worker").commit();
+	  }
+
+// depreciated let the worker fragment do the initialization(new DownloadImageTask) and image getting
+
+//	  if(diTask != null){
+//		 android.os.AsyncTask.Status diStatus = diTask.getStatus();
+//		 android.util.Log.e(getClass().getSimpleName(), "ditask status = " + diStatus);
+//
+//		 if(diStatus != android.os.AsyncTask.Status.FINISHED){
+//			android.util.Log.e(getClass().getSimpleName(), "finished the task");
+//			return;
+//		 }
+//	  }
+//	  diTask = DownloadImageTask.newInstance(this);
+//	  diTask.execute(httpResourceLocation);
    }
 
-
-   @Override
-   public boolean onCreateOptionsMenu(Menu menu){
-	  // Inflate the menu; this adds items to the action bar if it is present.
-	  getMenuInflater().inflate(R.menu.menu_main, menu);
-	  return true;
-   }
-
-   @Override
-   public boolean onOptionsItemSelected(MenuItem item){
-	  // Handle action bar item clicks here. The action bar will
-	  // automatically handle clicks on the Home/Up button, so long
-	  // as you specify a parent activity in AndroidManifest.xml.
-	  int id = item.getItemId();
-
-	  //noinspection SimplifiableIfStatement
-	  if(id == R.id.action_settings){
-		 imageView.setImageResource(android.R.color.transparent);
+	  @Override public boolean onCreateOptionsMenu (Menu menu){
+		 // Inflate the menu; this adds items to the action bar if it is present.
+		 getMenuInflater().inflate(R.menu.menu_main, menu);
 		 return true;
 	  }
 
-	  return super.onOptionsItemSelected(item);
+	  @Override public boolean onOptionsItemSelected (MenuItem item){
+		 // Handle action bar item clicks here. The action bar will
+		 // automatically handle clicks on the Home/Up button, so long
+		 // as you specify a parent activity in AndroidManifest.xml.
+		 int id = item.getItemId();
+
+		 //noinspection SimplifiableIfStatement
+		 if(id == R.id.action_settings){
+			imageView.setImageResource(android.R.color.transparent);
+			return true;
+		 }
+
+		 return super.onOptionsItemSelected(item);
+	  }
    }
-}
