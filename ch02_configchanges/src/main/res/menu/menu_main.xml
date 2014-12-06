@@ -1,8 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.nullcognition.androidfragments.MainActivity">
-	<item android:id="@+id/action_settings"
-	      android:title="@string/action_settings"
-	      android:orderInCategory="100"
-	      android:showAsAction="never"/>
+      tools:context="com.nullcognition.androidfragments.MainActivity"
+	>
+	<item
+		android:id="@+id/action_settings"
+		android:title="@string/action_settings"
+		android:orderInCategory="100"
+		android:showAsAction="never"
+		/>
+	<item
+		android:id="@+id/action_next_activity"
+		android:title="@string/action_next_activity"
+		android:orderInCategory="100"
+		android:showAsAction="never"
+		/>
 </menu>

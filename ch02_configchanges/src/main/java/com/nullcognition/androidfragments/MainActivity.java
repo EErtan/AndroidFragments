@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import com.nullcognition.ch02_configchanges.R;
 
 public class MainActivity extends Activity {
+
    // as a rule image downloading should not be done in an async task as the network may be of poor quality,
    // thus one should use a service for the persistance throughout the application lifecyle.
 
@@ -33,8 +34,12 @@ public class MainActivity extends Activity {
 			diTask.setImageInView();
 		 }
 	  }
+	  picassoButtonClickInit();
 
-	  // picasso library implementation
+
+   }
+
+   private void picassoButtonClickInit(){// picasso library implementation
 	  android.widget.Button buttonOk = (android.widget.Button)findViewById(com.nullcognition.ch02_configchanges.R.id.buttonOk);
 	  buttonOk.setOnClickListener(new android.view.View.OnClickListener() {
 
@@ -77,24 +82,33 @@ public class MainActivity extends Activity {
 //	  diTask.execute(httpResourceLocation);
    }
 
-	  @Override public boolean onCreateOptionsMenu (Menu menu){
-		 // Inflate the menu; this adds items to the action bar if it is present.
-		 getMenuInflater().inflate(R.menu.menu_main, menu);
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu){
+	  // Inflate the menu; this adds items to the action bar if it is present.
+	  getMenuInflater().inflate(R.menu.menu_main, menu);
+	  return true;
+   }
+
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item){
+	  // Handle action bar item clicks here. The action bar will
+	  // automatically handle clicks on the Home/Up button, so long
+	  // as you specify a parent activity in AndroidManifest.xml.
+	  int id = item.getItemId();
+
+	  //noinspection SimplifiableIfStatement
+	  if(id == R.id.action_settings){
+		 imageView.setImageResource(android.R.color.transparent);
 		 return true;
 	  }
+	  else if(id == R.id.action_next_activity){
 
-	  @Override public boolean onOptionsItemSelected (MenuItem item){
-		 // Handle action bar item clicks here. The action bar will
-		 // automatically handle clicks on the Home/Up button, so long
-		 // as you specify a parent activity in AndroidManifest.xml.
-		 int id = item.getItemId();
-
-		 //noinspection SimplifiableIfStatement
-		 if(id == R.id.action_settings){
-			imageView.setImageResource(android.R.color.transparent);
-			return true;
-		 }
-
-		 return super.onOptionsItemSelected(item);
+		 android.content.Intent startactivity2 = new android.content.Intent(this, MainActivity2.class);
+		 startactivity2.putExtra("startactivity2", "value");
+		 startActivity(startactivity2);
+		 return true;
 	  }
+	  return super.onOptionsItemSelected(item);
    }
+
+}
