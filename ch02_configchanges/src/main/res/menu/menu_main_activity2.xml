@@ -17,5 +17,9 @@
 			android:id="@+id/menu_embedded"
 			android:title="Show Embedded Prompt Dialog"
 			/>
+		<item
+		android:id="@+id/action_next_activity"
+		android:title="Next Activity"
+		/>
 	</group>
 </menu>

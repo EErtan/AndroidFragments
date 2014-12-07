@@ -44,6 +44,11 @@ public class MainActivity2 extends Activity implements OnDialogDoneListener {
 		 case R.id.menu_embedded:
 			dialogHelperClass.testEmbeddedDialog();
 			break;
+		 case com.nullcognition.ch02_configchanges.R.id.action_next_activity:
+			android.content.Intent startactivity3 = new android.content.Intent(this, MainActivity3.class);
+			startactivity3.putExtra("startactivity2", "value");
+			startActivity(startactivity3);
+			return true;
 	  }
 
 	  return super.onOptionsItemSelected(item);
