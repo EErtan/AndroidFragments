@@ -1,1 +1,1 @@
-include ':app', ':ch02_configchanges'
+include ':app', ':ch02_configchanges', ':chapter4preferences'
