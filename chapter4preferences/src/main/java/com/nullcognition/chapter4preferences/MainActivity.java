@@ -1,6 +1,7 @@
 package com.nullcognition.chapter4preferences;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,12 +25,13 @@ public class MainActivity extends Activity {
 	  if(hasPref){
 		 android.util.Log.e(getClass().getSimpleName(), "Hass been called befor");
 		 someString = sharedPreferences.getString("someString", "");
-	  }else{
+	  }
+	  else{
 		 android.util.Log.e(getClass().getSimpleName(), "first time called");
 		 someString = "assign dynamic value";
 	  }
 
-	  android.util.Log.e(getClass().getSimpleName(), "someString = " + someString  );
+	  android.util.Log.e(getClass().getSimpleName(), "someString = " + someString);
 
 	  android.content.SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -57,6 +59,8 @@ public class MainActivity extends Activity {
 
 	  //noinspection SimplifiableIfStatement
 	  if(id == R.id.action_settings){
+		 Intent intent = new Intent().setClass(this, PrefsActivity.class);
+		 this.startActivityForResult(intent, 0);
 		 return true;
 	  }
 

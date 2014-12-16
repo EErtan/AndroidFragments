@@ -19,6 +19,13 @@
 			</intent-filter>
 
 		</activity>
+
+		<activity android:name=".PrefsActivity">
+			<intent-filter>
+				<category android:name="android.intent.category.PREFERENCE"/>
+			</intent-filter>
+		</activity>
+
 	</application>
 
 </manifest>
