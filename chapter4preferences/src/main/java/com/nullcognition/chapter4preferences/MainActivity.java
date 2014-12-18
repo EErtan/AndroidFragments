@@ -38,8 +38,6 @@ public class MainActivity extends Activity {
 	  editor.putBoolean(INITIALIZED, true);
 	  editor.putString("someString", someString);
 	  editor.commit();
-
-
    }
 
 
@@ -65,5 +63,11 @@ public class MainActivity extends Activity {
 	  }
 
 	  return super.onOptionsItemSelected(item);
+   }
+
+   @Override
+   protected void onActivityResult(int requestCode, int resultCode, Intent data){
+	  super.onActivityResult(requestCode, resultCode, data);
+
    }
 }
