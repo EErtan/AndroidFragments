@@ -61,6 +61,12 @@ public class MainActivity extends Activity {
 		 this.startActivityForResult(intent, 0);
 		 return true;
 	  }
+	  if(id == R.id.action_activity){
+		 Intent intent = new Intent().setClass(this, MainActivity2.class);
+		 this.startActivityForResult(intent, 0);
+		 return true;
+	  }
+
 
 	  return super.onOptionsItemSelected(item);
    }

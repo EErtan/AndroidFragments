@@ -15,5 +15,6 @@
     <string name="menu_prefs_title">Settings</string>
     <string name="menu_quit_title">Quit</string>
     <string name="title_activity_main_activity2">MainActivity2</string>
+	<string name="action_activiy">next activity</string>
 
 </resources>

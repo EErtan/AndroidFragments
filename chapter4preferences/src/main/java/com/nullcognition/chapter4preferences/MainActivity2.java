@@ -45,7 +45,7 @@ public class MainActivity2 extends Activity {
 	  if (item.getItemId() == R.id.menu_prefs)
 	  {
 		 Intent intent = new Intent()
-		   .setClass(this, MainPreferenceActivity.class);
+		   .setClass(this, PrefsActivity.class);
 		 this.startActivityForResult(intent, 0);
 	  }
 	  return true;
