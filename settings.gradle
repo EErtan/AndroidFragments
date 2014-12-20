@@ -1,1 +1,1 @@
-include ':app', ':ch02_configchanges', ':chapter4preferences'
+include ':app', ':ch02_configchanges', ':chapter4preferences', ':chapter6async&progress'
