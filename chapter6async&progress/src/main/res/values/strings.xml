@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">chapter6Async&amp;Progress</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+	<string name="app_name">chapter6Async&amp;Progress</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="action_settings">Settings</string>
+
+	<item type="id" name="menu_da_clear"/>
+	<string name="help">This is to test async task.</string>
 
 </resources>
