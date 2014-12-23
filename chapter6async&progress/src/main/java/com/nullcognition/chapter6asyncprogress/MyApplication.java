@@ -14,7 +14,7 @@ public class MyApplication extends Application {
    public void onConfigurationChanged(Configuration newConfig){
 	  super.onConfigurationChanged(newConfig);
 	  Log.d(tag, "configuration changed");
-   }
+   } // test
 
    @Override
    public void onCreate(){
