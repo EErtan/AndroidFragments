@@ -110,7 +110,7 @@ public class MyLongTask extends AsyncTask<String, Integer, Integer> implements D
 	  newPD.setTitle("title");
 	  newPD.setMessage("In progress...");
 	  newPD.setCancelable(true);
-	  newPD.setOnCancelListener(this);
+	  newPD.setOnCancelListener(this     );
 	  newPD.setIndeterminate(false);
 	  newPD.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 	  newPD.setMax(PDMAX);
